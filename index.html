@@ -32,10 +32,11 @@
                 //"function userExists(address user) view returns(bool)"
                 ];
 
-            const cellContract = new ethers.Contract(cellAddress, cell, provider);
-            //const signer = provider.getSigner();
-
-            /*async*/ function button_clicked(){
+            
+            const signer = provider.getSigner();
+            const cellContract = new ethers.Contract(cellAddress, cell, signer);
+            
+            async function button_clicked(){
                 //let balance = await cellContract.balanceOf(signer);
                 //document.getElementById("balance").innerHTML = balance;
             }
