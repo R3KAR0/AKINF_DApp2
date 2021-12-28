@@ -12,7 +12,7 @@
                     alert("You are not connected to the ropsten network! Please change your current network in MetaMask and reload this site :)");
             }
             else{
-            const cellAddress = 0x9c11bfb128C62FEe27c3EF17d4FE7a55D9738177;
+            const cellAddress = "0x9c11bfb128C62FEe27c3EF17d4FE7a55D9738177";
             const cell = [
                 // Some details about the token
                 "function name() view returns (string)",
@@ -27,9 +27,9 @@
                 // An event triggered whenever anyone transfers to someone else
                 "event Transfer(address indexed from, address indexed to, uint amount)",
 
-                "function registerUser(address user)",
+                //"function registerUser(address user)",
 
-                "function userExists(address user) view returns(bool)"
+                //"function userExists(address user) view returns(bool)"
                 ];
 
             const cellContract = new ethers.Contract(cellAddress, cell, provider);
