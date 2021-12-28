@@ -1,0 +1,54 @@
+<HTML>
+    <head>
+
+    </head>
+    <body>
+        <script type="module">
+            import { ethers } from "./ethers.js";
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            if(network.name != "ropsten"){
+                    alert("You are not connected to the ropsten network! Please change your current network in MetaMask and reload this site :)");
+            }
+            else{
+            const cellAddress = "0x9c11bfb128C62FEe27c3EF17d4FE7a55D9738177";
+            const cell = [
+                // Some details about the token
+                "function name() view returns (string)",
+                "function symbol() view returns (string)",
+
+                // Get the account balance
+                "function balanceOf(address) view returns (uint)",
+
+                // Send some of your tokens to someone else
+                "function transfer(address to, uint amount)",
+
+                // An event triggered whenever anyone transfers to someone else
+                "event Transfer(address indexed from, address indexed to, uint amount)",
+
+                "function registerUser(address user)",
+
+                "function userExists(address user) view returns(bool)"
+                ];
+
+            const cellContract = new ethers.Contract(cellAddress, cell, provider);
+            const signer = provider.getSigner();
+
+            async function button_clicked(){
+                let balance = await cellContract.balanceOf(signer);
+                document.getElementById("balance").innerHTML = balance;
+            }
+
+            let btn = document.getElementById("button");
+            btn.addEventListener("click", button_clicked);
+        }
+        </script>
+
+    <button id="button">Load CELL-balance</button>
+    <div>
+        <h1>Your current balance:</h1>
+        <h2 id="balance"></h2>
+    </div>
+
+    </body>
+</HTML>
