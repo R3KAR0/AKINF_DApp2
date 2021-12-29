@@ -27,9 +27,9 @@
                 // An event triggered whenever anyone transfers to someone else
                 "event Transfer(address indexed from, address indexed to, uint amount)",
 
-                //"function registerUser(address user)",
+                "function registerUser(address user)",
 
-                //"function userExists(address user) view returns(bool)"
+                "function userExists(address user) view returns(bool)"
                 ];
 
             
@@ -37,7 +37,7 @@
             const cellContract = new ethers.Contract(cellAddress, cell, signer);
             
             async function button_clicked(){
-                let balance = await cellContract.balanceOf(signer);
+                let balance = await cellContract.balanceOf(signer.getAddress());
                 document.getElementById("balance").innerHTML = balance;
             }
 
