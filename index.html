@@ -6,20 +6,7 @@
         <script type="module">
             import { ethers } from "./ethers.js";
 
-            function connect() {
-                ethereum
-                    .request({ method: 'eth_requestAccounts' })
-                    .catch((error) => {
-                    if (error.code === 4001) {
-                        // EIP-1193 userRejectedRequest error
-                        console.log('Please connect to MetaMask.');
-                    } else {
-                        console.error(error);
-                    }
-                    });
-            }
-
-            //await window.ethereum.enable();
+            await window.ethereum.enable();
             connect();
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             let network = await provider.getNetwork();
