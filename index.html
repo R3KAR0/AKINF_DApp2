@@ -44,7 +44,7 @@
             async function button_clicked(){
                 let balance = await cellContract.balanceOf(signerAddress);
                 let decimals = await cellContract.decimals();
-                document.getElementById("balance").innerHTML = balance/Math.pow(10,decimals);//).toFixed(2);
+                document.getElementById("balance").innerHTML = (balance/Math.pow(10,decimals)).toFixed(decimals);
             }
 
             let btn = document.getElementById("button");
