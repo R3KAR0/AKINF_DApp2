@@ -34,10 +34,11 @@
 
             
             const signer = provider.getSigner();
+            const signerAddress = await signer.getAddress();
             const cellContract = new ethers.Contract(cellAddress, cell, signer);
             
             async function button_clicked(){
-                let balance = await cellContract.balanceOf(signer.getAddress());
+                let balance = await cellContract.balanceOf(signerAddress);
                 document.getElementById("balance").innerHTML = balance;
             }
 
